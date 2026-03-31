@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login
-from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+
 
 @login_required
 def secret_page(request):
     return render(request, 'users/secret.html')
 
+
 def logout_view(request):
     logout(request)
     return redirect('home')
+
 
 def home(request):
     return render(request, 'users/home.html')
@@ -27,6 +28,7 @@ def register(request):
         form = UserCreationForm()
 
     return render(request, 'users/register.html', {'form': form})
+
 
 def login_view(request):
     if request.method == 'POST':
