@@ -29,3 +29,5 @@ jobs:
       - name: Запуск тестов
         run: |
           pytest
+          
+          # trigger
